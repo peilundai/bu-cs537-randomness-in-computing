@@ -1,0 +1,113 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{3}
+% problem number
+\problemnumber{1}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+% \collaborators{Hieu (briefly discussed a question)}
+
+
+\begin{document}
+\section*{1. (Detecting defects) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} \proof 
+
+Let $D$ to denote the event that at least one defective cookie is found. Then 
+
+\begin{align}
+	Pr[D] 	& = 1 - (1-p)^k \\
+			& \geq 1 - (1-\alpha)^k \\
+			& \geq 1 - (1-\alpha)^{\frac{\ln{100}}{\alpha}} \\
+			& \geq 1 - (e^{-\alpha})^{\frac{\ln{100}}{\alpha}} \\
+			& \geq 1 - e^{\ln{1/100}} \\
+			& \geq 1 - 0.01 = 0.99
+\end{align}
+
+Note that from (1) to (2), we have used the inequality $p \geq \alpha$; from (2) to (3), we have used the inequality $k \geq {\ln{100} \over \alpha}$; and from (3) to (4), we have used the inequality $1-\alpha \leq e^{-\alpha}$. 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} Solution: Let $p_i$ be the proportion of detective cookies the $i^{th}$ worker baked; Let $D_i$ be the event that if $p_i \geq \alpha$, then at least one detective cookie is found for that person; Let $D$ be the event that for all unreliable workers, at least one defective cookie is found. 
+
+\begin{align}
+  Pr[D]     & = \sum_{i=1}^n Pr[]
+\end{align}
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{2}
+% problem number
+\problemnumber{3}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{Hieu (briefly discussed a question)}
+
+
+\begin{document}
+\section*{3. (Random subsets) }
+
+\subsection*{(a)} \proof Let $S$ be the set of integers in $[n]$ that was selected. Let $h_i$ and $t_i$ denote the event that the $i_{th}$ coin is $head$ or $tail$ respectively.
+Since each each coin flip is independent for each element of the set, then the probability of generating such a set $S$ is 
+
+\begin{align}
+	Pr[S] & = Pr\Big[\Big(\bigcap_{i \in S} h_i \Big)\bigcap \Big( \bigcap_{j\in [n]-S} t_j \Big) \Big] \\
+	& = \prod_{i \in S} Pr [h_i] \times \prod_{j \in [n] - S} Pr[t_i] \\
+	& =  \prod_{i \in S} {1\over 2} \times \prod_{j \in [n] - S} (1 - {1\over 2}) \\
+	& = \frac{1}{2^{n}}
+\end{align}
+
+Since our choice of $S$ is random and the final expression is independent of the selection of $S$, we have shown that any of the possible subsets is equally likely to be chosen.
+
+
+\subsection*{(b)} Solution: From the result of (a), we can do this subset selection using a process of selecting each number in sequence by flip two coins, for $X_i$ and $Y_i$ respectively. In order to get $X \subseteq Y$, we need to make sure for any $i \in [n]$, we shouldn't have the event $[X_i = 1] \bigcap [Y_i] = 0$. Since each selection is independent, the total probability of getting $X \subseteq Y$ is expressed as 
+
+\begin{align}
+	Pr[X \subseteq Y ] 	& = Pr\Big[\bigcap_{i=1}^n \:!([X_i = 1] \cap [Y_i] = 0)\Big] \\
+						& = \prod_{i=1}^n Pr[!([X_i = 1] \cap [Y_i] = 0)] \\
+						& = \prod_{i=1}^n (1 - 1/4) \\
+						& = \Big(\frac{3}{4}\Big)^n
+\end{align} 
+
+\subsection*{(c)} Solution: Similar to (b), we use the same sequential order to decide whether a number should be in the three sets. For each number $i \in [n]$, there are three possibilities in order to satisfy the requirement: 1) $i$ is not selected in any of the three sets; 2) $i$ is selected in 2 sets; 3) $i$ is selected in three sets. Let the event $S_i$ denote the event that number $i$ satisfy any of the 3 conditions. $Pr[S_i] = {3 \choose 0}(1/2)^3 + {3 \choose 2}(1/2)^3 + {3 \choose 3}(1/2)^3 = 5/8$. Since each number is selected independently, the overall probability is 
+
+\begin{align}
+	Pr[E] 	& = \prod_{i=1}^n Pr[S_i] \\
+			& = \prod_{i=1}^n \Big( {5 \over 8} \Big) \\
+			& = \Big( {5 \over 8} \Big)^n
+\end{align}
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

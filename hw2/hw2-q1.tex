@@ -1,0 +1,55 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{2}
+% problem number
+\problemnumber{1}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+% \collaborators{John Doe (worked together), Ben Bitdiddle (I helped him)}
+
+\begin{document}
+\section*{ 1. (Chess board) }
+
+\subsection*{(a)} Solution: The events \textit{A} and \textit{B} are not independent. $P(A\cap B) = 0 \neq P(A)P(B) = 1/64 \times 1/64 $. 
+
+\subsection*{(b)} Solution: The events \textit{A} and \textit{B} are independent. $P(A\cap B) = 1/4 =  P(A)P(B) = 1/2 \times 1/2 $.
+
+\subsection*{(c)} Solution: The events \textit{A} and \textit{B} are independent. $P(A\cap B) = 16/64 = 1/4 = P(A)P(B) = 1/2 \times 1/2 $.
+
+\subsection*{(d)} Solution: The events \textit{A}, \textit{B} and \textit{C} are not independent. Assuming the orientation is fixed, and the first square is black, then all the squares located in even numbered rows as well as even numbered columns are black, thus 
+
+\begin{align} 
+	P(A \cap B \cap C) & = 0 \nonumber  \\ \nonumber \\ 
+	P(A)P(B)P(C) & = {1 \over 2} \times {1 \over 2} \times {1 \over 2} \nonumber \\
+	& = {1 \over 8}\nonumber \\
+	& \neq P(A \cap B \cap C) \nonumber 
+\end{align}
+
+The above proof is also true when we choose the orientation of the board such that the first square is white in which case $P(A \cap B \cap C)  = 1 \neq P(A)P(B)P(C)$.
+
+
+\end{document} 

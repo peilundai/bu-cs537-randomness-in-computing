@@ -1,0 +1,142 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{3}
+% problem number
+\problemnumber{4}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+% \collaborators{Hieu (briefly discussed a question)}
+
+
+\begin{document}
+\section*{4. (Random children) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)}
+
+Solution: Let $C$, $B$, $G$ denote the RVs the total number of children, the total number of boys, and the total number of girls the couple will have respectively. Then $C \sim Geom(1/2)$, and $\mathbb{E}(C) = 1/(1/2) = 2$. Since the couple will end until they have a girl, thus, $\mathbb{E}(G) = 1$. $\mathbb{E}(B) = \mathbb{E}(C) - \mathbb{E}(G) = 2 - 1 = 1$. Thus, both the expected number of girls and boys are 1. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)}
+
+Solution: If the probability of having a girl is only 0.4. Then $C \sim Geom(0.4)$, and $\mathbb{E}(C) = 1/(0.4) = 2.5$, and $\mathbb{E}(G) = 1$. Then $\mathbb{E}(B) = \mathbb{E}(C) - \mathbb{E}(G) = 2.5 - 1 = 1.5$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)}
+
+Solution: Let $C_1$, $B_1$, $G_1$ denote the RVs the total number of children, the total number of boys, and the total number of girls the couple will have respectively following the new rule and $p$ the probability of having a girl. 
+
+We can construct other variables $C_2$, $B_2$ and $G_2$ which denote the additional children the couple would have if they follow the old rule. 
+
+\begin{align}
+  C   & = C_1 + C_2 \\
+  B   & = B_1 + B_2 \\
+  G   & = G_1 + G_2 \\
+  C_1 & = B_1 + G_1 \\
+  C_2 & = B_2 + G_2 \\
+  C   & = B + G
+\end{align}
+
+Note that $C_2 \sim Geom(p)$ happens with probability $(1-p)^k$ which is denote by $Pr[C>k]$ otherwise $C_2 = 0$. 
+
+\begin{align}
+  \mathbb{E}(B_1)   & = \mathbb{E}(B) - Pr[C>k]\mathbb{E}(B_2) \nonumber \\ 
+                    & = (1/p - 1) - (1-p)^k (1/p-1) \nonumber \\
+                    & = \big[ 1 - (1-p)^k \big](1/p - 1)
+\end{align}
+
+Similarly, for the expected number of girls, $G_1$, under the new rule,
+
+\begin{align}
+  \mathbb{E}(G_1)   & = \mathbb{E}(G) - Pr[C>k] \mathbb{E}(G_2) \nonumber \\ 
+                    & = 1 - (1-p)^k 1 \nonumber \\
+                    & = 1 - (1-p)^k
+\end{align}
+
+If we plug in the value $p=0.5$ to (7) and (8) respectively, we obtain the expected number of boys to be $1-(1/2)^k$, and the expected number of girls to be $1-(1/2)^k$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(d)}
+
+We plug in the value $p=0.4$ to (7) and (8) respectively, we obtain the expected number of boys to be $1.5(1-0.6^k)$, and the expected number of girls to be $1-0.6^k$.
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
