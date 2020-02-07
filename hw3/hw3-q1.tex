@@ -29,11 +29,11 @@
 \author{Peilun Dai}
 % Collaborators. If you didn't collaborate, write "\collaborators{none}".
 % If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
-% \collaborators{Hieu (briefly discussed a question)}
+ \collaborators{None}
 
 
 \begin{document}
-\section*{1. (Detecting defects) }
+\section*{1. (Detecting Defects) }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -54,11 +54,30 @@ Note that from (1) to (2), we have used the inequality $p \geq \alpha$; from (2)
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{(b)} Solution: Let $p_i$ be the proportion of detective cookies the $i^{th}$ worker baked; Let $D_i$ be the event that if $p_i \geq \alpha$, then at least one detective cookie is found for that person; Let $D$ be the event that for all unreliable workers, at least one defective cookie is found. 
+\subsection*{(b)} Solution: Let $p_i$ be the probability that worker $i$ will have a defect, $D$ be the event that if all unreliable workers are caught and let $F_i$ be the event that the test fails to catch worker $i$. 
 
 \begin{align}
-  Pr[D]     & = \sum_{i=1}^n Pr[]
+  Pr[\cup_{i=1}^n F_i ] & \leq \sum_{i=1}^n Pr[F_i] \\
+                  Pr[D] & = 1 - Pr[\cup_{i=1}^n F_i ] \\
+                        & \geq 1 - \sum_{i=1}^n Pr[F_i] \\
+                        & = 1 - \sum_{i=1}^n(1 - p_i)^k \\
+                        & \geq 1 - n(1-\alpha)^k
 \end{align}
+
+From (10) to (11), we've used the fact that $p_i \geq \alpha$ if worker $i$ is unreliable. In order for $Pr[D]$ to be at least $99\%$, then 
+$$
+1 - n(1 - \alpha)^k \geq 99\%
+$$
+
+Solving for $k$, 
+
+\begin{align}
+  1 - n(1-\alpha)^k & \geq 0.99 \\
+      n(1-\alpha)^k & \leq 0.01 \\
+       (1-\alpha)^k & \leq 0.01/n \\
+                  k & \geq \log_{1-\alpha}{(0.01/n)}
+\end{align}
+
 
 
 \end{document} 
