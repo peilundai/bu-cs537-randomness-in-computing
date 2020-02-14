@@ -1,0 +1,152 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{4}
+% problem number
+\problemnumber{4}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+\collaborators{None}
+
+
+\begin{document}
+\section*{4. (Selling a plane) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)}
+
+Solution: Since the distribution of the sequence is uniform, by symmetry, we know that each of the first $i-1$ offers has an equal probability of being the highest among the first $i-1$ offers. Let $F_{m, i-1}$ denote the event that the best among the first $i-1$ offers is in the first $m$ offers. Then 
+
+$$Pr[F_{m, i-1}] = m/(i-1)$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)}
+
+Solution: In order for $B_i$ to happen, the largest among the first $i-1$ numbers must be in the first $m$ numbers, otherwise, another number between $m+1$ and $i-1$ will be chosen instead of $i$. The second condition is that the $i^{th}$ number must be the largest number in order for $B_i$ to happen. The second event is denoted by $L_i$.
+
+\begin{align*}
+  Pr[B_i]   & = Pr[F_{m, i-1}] Pr[L_i] \\
+            & = {m \over i-1} {1 \over n} = {m \over n}{1 \over i-1}
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)}
+
+Solution: Based on the strategy we are employing, we know that $Pr[B_i] = 0$ for $i \leq m$. And also note that the events $B_i$ are mutually exclusive. 
+
+\begin{align*}
+  Pr[B]     & = \sum_{i=1}^n Pr[B_i] \\
+            & = \sum_{i=1}^{m} Pr[B_i] + \sum_{j=m+1}^{n} Pr[B_j] \\
+            & = \sum_{i=m=1}^n Pr[B_i] = {m \over n}\sum_{i=m+1}^n {1 \over i-1}
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(d)}
+
+Solution: We use the approximation $H(n) = \sum_{i=1}^n {1 \over i} = \ln{n} + \Theta(1)$ and also that $H(x) - \ln{x} \geq H(y) - \ln{y} \geq 0$ for $x > y$. Note that $\lambda = \lim_{x \rightarrow \infty}(H(x) - \ln{x}) > 0$ is called Euler–Mascheroni constant. These are properties from the approximation of Harmonic Numbers the derivation of which will be omitted here (It involves using integration to get the approximation as covered in Discussion).  
+
+\begin{align}
+  Pr[B]     & = {m \over n}\sum_{i=m+1}^n {1 \over i-1}  \nonumber \\
+            & =  {m \over n}\sum_{j=m}^{n-1} {1 \over j} =  {m \over n}\big(H(n-1) - H(m-1)\big) \geq  {m \over n}\big(\ln{(n-1)} - \ln{(m-1)}\big) =  {m \over n}\ln{{n-1 \over m-1}} \\
+      Pr[B] & \geq  {m \over n}\sum_{j=m+1}^n {1 \over j} =  {m \over n}\big(H(n) - H(m)\big) \geq  {m \over n}\big(\ln{n} - \ln{m}\big) =  {m \over n}\ln{{n \over m}}
+\end{align}
+
+Thus from (1) and (2), we have shown that 
+
+$${m \over n}\ln{{n\over m}} \leq Pr[B] \leq {m\over n}\ln{{n-1 \over m-1}}.$$ 
+
+The equality is taken when $m=n$ which should not happen, and when $m, n \rightarrow \infty$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(e)}
+
+Solution: Let $x = m/n > 0$. So we can take the derivative of the function $f(x)= x\ln{{1 \over x}}$ and set it to $0$. 
+
+\begin{align*}
+  f'(x)       & = -(\ln{x} + 1) = 0 \\
+  {m \over n} & = x = {1 \over e}
+\end{align*}
+
+When ${m \over n} = {1 \over e}$ i.e. $m = {n \over e}$, ${m \over n} \ln{{n \over m}}$ has a maximum value of ${1 \over e}$. A lower bound of ${1 \over e}$ is obtained for $Pr[B]$ when $m = {n \over e}$. 
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
