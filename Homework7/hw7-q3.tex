@@ -1,0 +1,108 @@
+\documentclass[11pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{7}
+% problem number
+\problemnumber{3}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{3. (Randomized Routing on the Hypercube) }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)}
+
+\proof 
+
+In Phase 1 of the algorithm, assuming we are using bit-fixing algorithm. Let $P_i$ and $P_j$ be two paths that was separated at step $k$, which means that at their point of separation, they share bits from bit 1 to bit $k-1$, and different in bit $k$. Assuming first that they joined at a later step $l>k$, then based on the bit-fixing algorithm, the first $l$ bits should be the same, which contradicts the assumption that they different at bit $k < l$. Thus, they could not rejoin after they separates. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)}
+
+Solutions: No. (a) doesn't imply that for any two packets $i$ and $j$, there is at most one node such that $i$ and $j$ are waiting in queue. 
+
+Just consider the case that after the two bits joined at step $k$, and later at step $l$, they separate ways. If their targets share bits from $k$ to $l-1$ and that $l-k \geq 2$, then they could wait in queue at nodes from $k$ all the way to $l-1$, which is more than one node. 
+
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

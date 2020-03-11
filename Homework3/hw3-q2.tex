@@ -1,0 +1,156 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{3}
+% problem number
+\problemnumber{2}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{2. (Improved Randomized Min-Cut Algorithm) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} Solutions: If we run the algorithm twice, then the number of edge contractions will be two times the number of contractions in a single run, $2(n-2)$. 
+
+The probability of missing a min cut in both runs will be bounded by 
+
+\[
+  \Big( 1 - {2 \over n(n-1)}  \Big)^2
+\]
+
+Thus, the probability of finding a min cut with two runs will be bounded by
+
+\[ 
+1 - \Big( 1 - {2 \over n(n-1)}  \Big)^2
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} Solutions: When we contract the graph from $n$ vertices down to $k$ vertices, the number of contraction is $n-k$. For the second step, the number of contractions is $l(k-2)$. So the total number of contraction is $(n-k) + l(k-2)$. 
+
+Assume that the number of edges in the min-cut set $C$ is $m$. Let $E_i$ be the event that the edge contracton contracted in iteration $i$ is not in $C$, adn let $F_i = \cap_{j+1}^i E_j$. In the first contraction, the probability of not choosing an edge in the min-cut set $C$ to contract 
+$$
+Pr[E_1] = Pr[F_1] \geq 1 - {2m \over nm} = 1 - {2\over n}.
+$$
+
+Conditioned on the event that in the first contraction, the edge contracted is not in $C$, we can continue the analysis,
+
+$$
+Pr[E_2|F_1] \geq 1 - {m \over m(n-1)/2} = 1 - {2 \over n-1}. 
+$$
+
+Similarly,
+
+$$
+Pr[E_i|F_{i-1}] \geq 1 - {m \over m(n-i+1)/2} = 1 - {2\over n-i+1}.
+$$
+
+Thus, the probability that the edges in the set $C$ have never been contracted until we are left with $k$ vertices is 
+
+\begin{align*}
+  Pr[F_{n-k}]   & = Pr[E_{n-k}|F_{n-k-1}] \cdot Pr[E_{n-k-1}|F_{n-k-2}] \cdots Pr[E_2|F_1]\cdot Pr[F_1] \\
+                & \geq \prod_{i=1}^{n-k} \Bigg( 1 - {2 \over n-i+1} \Bigg) = \prod_{i=1}^{n-k} \Bigg( {n-i-1 \over n-i+1} \Bigg) \\
+                & = {k(k-1) \over n(n-1)}
+\end{align*}
+
+Similarly for the second stage, for each copy of the $l$ problems, we can apply the same analysis and bound the probability of finding the min-cut set of size $m$ by 
+
+$$
+{2 \over k(k-1)}
+$$
+
+Thus, the totally probability of finding the min-cut set after the two steps is bounded by 
+$$
+{k(k-1) \over n(n-1)} \Bigg(1 - (1-{2 \over k(k-1)})^l\Bigg)
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)} Solutions: The problem can be formulated as the following optimization problem,
+
+\begin{align*}
+  \max_{k, l} \text{   }& {k(k-1) \over n(n-1)} \Bigg(1 - (1-{2 \over k(k-1)})^l\Bigg) \\
+  \text{s.t.   } & (n-k) + l(k-2) = 2(n-2)
+\end{align*}
+
+
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

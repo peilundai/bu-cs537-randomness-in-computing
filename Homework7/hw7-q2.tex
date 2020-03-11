@@ -1,0 +1,116 @@
+\documentclass[11pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{7}
+% problem number
+\problemnumber{2}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{2. (Random vectors) }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} 
+
+Solutions: $\textbf{a}\cdot \textbf{b} = \sum_{i=1}^d a_i b_i$. Let random variable $X_i = a_i b_i$, so $\sum_{i=1}^d X_i = \textbf{a}\cdot \textbf{b}$. It is obvious that $Pr[X_i=1/d] = Pr[-1/d] = 1/2$. Thus, $\mathbf{E}[X_i] = 0$. Using Hoeffding's Bounds,
+\begin{align}
+  Pr[|\textbf{a}\cdot \textbf{b}| > 1/10] & \leq Pr[|\textbf{a}\cdot \textbf{b}| \geq 1/10]\\
+                      & = Pr[|\sum_{i=1}^d X_i| \geq 1/10] \\
+                      & = Pr\big[|{1\over d}\sum_{i=1}^d X_i| \geq 1/(10d)\big] \\
+                      & \leq 2 e^{-2d({1 \over 10d})^2/{2 \over d}^2} \\
+                      & = 2e^{-d/200}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)}
+
+Solutions: Let $\textbf{v}_i$ be the $i_{th}$ vector chosen and $I_{ij}$ where $i<j$ be the indicator random variable that  $\textbf{v}_i$ and $\textbf{v}_j$ are not 1/10-close to being orthogonal. From (1), we have shown that for any $i < j$, $Pr[|\textbf{v}_i \cdot \textbf{v}_j| > 1/10] = Pr[I_{ij} = 1] \leq 2e^{-d/200}$. Using union bound 
+\begin{align}
+  Pr\big[\sum_{i,j}I_{ij} > 0\big] & \leq \sum_{i<j}Pr[I_{ij} =1] \\
+  & \leq  \sum_{i<j}2e^{-d/200} \\
+  & \leq {k \choose 2}2e^{-d/200} \\
+  & = k(k-1)e^{-d/200}
+\end{align}
+
+Let the fail probability in (9) to be less or equal than a constant $\delta$, $k(k-1)e^{-d/200} \leq \delta$, then we can solve for $k = O(e^{d/200})$. 
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

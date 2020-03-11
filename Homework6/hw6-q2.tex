@@ -1,0 +1,131 @@
+\documentclass[11pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{6}
+% problem number
+\problemnumber{2}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{2. (Exercise 4.10 from MU) }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} 
+
+Solution: Let R.V. $X_i$ be the amount of money the casino lost in game $i$. $\mathbf{E}(X_i) = (3-1){4 \over 25} + (100-1){1\over 200} + (1)(1 - {4 \over 25} - {1 \over 200}) = -0.02$. In expectation, in each game, the casino will make $0.02$ dollars. Let $X$ denote the total amount of loss the casino has in the first 1 million games, i.e. $X = \sum_{i=1}^{1,000,000} X_i$ with $\mathbf{E}[X] = 1,000,000\cdot(-0.02) = -20,000$. Using Theorem 4.12, $a = -1, b=99$, we can set $\epsilon = 0.03$, 
+\begin{align}
+  Pr\Big[ {1\over 1,000,000} \sum_{i=1}^{1,000,000} X_i - \mu \geq \epsilon\Big] & \leq e^{-2n\epsilon^2/(b-a)} \\
+  Pr\Big[  {1\over 1,000,000} X - (-0.02)   \geq 0.03 \Big] & \leq e^{-0.18} \\
+  Pr\Big[ X \geq 10,000 \Big] \leq e^{-0.18} = 0.84\\
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} 
+
+Solution: Since $X_i$ are mutually independent,
+
+\begin{align}
+  \mathbf{E}[e^{tX}]      & = \mathbf{E}\Big[\exp \big\{t\sum_{i=1}^{1,000,000} X_i\big\}\Big] \\
+                          & = \mathbf{E}\Big[\prod_{i=1}^{1,000,000}\exp \big\{tX_i\big\}\Big]\\
+                          & = \prod_{i=1}^{1,000,000}\mathbf{E}[e^{tX_i}] \\
+                          & = \prod_{i}^{1,000,000}\sum_{X_i \in \{-1, 2, 99\}} Pr[X_i]e^{tX_i} \\
+                          & = \prod_{i}^{1,000,000}\Big( {4 \over 25}e^{2t} + {1 \over 200}e^{99t} + {167 \over 200}e^{-t}\Big)
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)} 
+
+Solution: 
+
+\begin{align}
+  Pr[X \geq 10,000]   & = Pr[e^{tX} \geq e^{10,000t}]  \\
+                      & \leq {\mathbf{E}(e^{tX}) \over e^{10,000t}} \\
+                      & = {\prod_{i}^{1,000,000}\Big( {4 \over 25}e^{2t} + {1 \over 200}e^{99t} + {167 \over 200}e^{-t}\Big) \over e^{10,000t}} \\
+                      & = {\prod_{i}^{1,000,000}\Big( {4 \over 25}e^{2\cdot0.0006} + {1 \over 200}e^{99\cdot 0.0006} + {167 \over 200}e^{-0.0006}\Big) \over e^{10,000\cdot 0.0006}} \\
+                      & \approx 0.000160646
+\end{align}
+where we have used $t=0.0006$ and also results from (9). Notice this is a march tighter bound compared to the bound in (a). 
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

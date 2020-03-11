@@ -1,0 +1,128 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{3}
+% problem number
+\problemnumber{3}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{3. (Jensen's Inequality) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} Solutions: If $f$ is a concave function, then 
+
+\begin{align}
+  \mathbb{E}(f(X)) & \leq f(\mathbb{E}(X))
+\end{align}
+
+This follows naturally from the original Jensen's inequality because if $f$ is concave, then $-f$ will be convex, and we can apply the Jensen's equality to $-f$, we would obtain the equality for concave function $f$ as above. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} \proof 
+
+Let $G_n = \sqrt[n]{\prod_{i=1}^n x_i}$ be the geometric mean and $A_n = {1\over n}\sum_{i=1}^n x_i$ be the arithmetic mean of a collection of $n$ positive real numbers $\{x_i\}$.
+
+\begin{align}
+  \log{A_n}   & = \log{\Big({1 \over n} \sum_{i=1}^n x_i \Big)} \\
+              & \geq {1 \over n} \sum_{i=1}^n \log{x_i} \\
+              & = \sum_{i=1}^n \Big( \log{x_i^{1/n}} \Big) \\
+              & = \log{\Big( \prod_{i=1}^n x_i^{1/n} \Big)} \\
+              & = \log{G_n} \\
+        A_n   & \geq G_n 
+\end{align}
+
+From (2) to (3) we have used the inequality in (a) where $f(x) = \log{x}$. (7) is obtained when we take the exponential of $\log{A_n}$ and $\log{G_n}$ respectively. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)} \proof 
+
+let $f(x) = \sin{x}$ where $ 0 < x < \pi$. Because $f``(x) = - \sin{x} < 0$ when $0 < x < \pi $, $f(x)$ is concave in the interval $(0, \pi)$. We can apply the inequality in (a),
+
+\begin{align}
+  {1 \over 3}\Big(\sin{A} + \sin{B} + \sin{C} \Big) & \leq \sin{{1\over3}(A + B + C)} \\
+  & \leq \sin{60^{\circ}} \\
+  & \leq {\sqrt{3} \over 2} \\
+  \sin{A} + \sin{B} + \sin{C} & \leq {3\sqrt{3} \over 2} 
+\end{align} 
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

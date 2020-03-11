@@ -1,0 +1,132 @@
+\documentclass[10pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{3}
+% problem number
+\problemnumber{1}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{1. (Detecting Defects) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} \proof 
+
+Let $D$ to denote the event that at least one defective cookie is found. Then 
+
+\begin{align}
+	Pr[D] 	& = 1 - (1-p)^k \\
+			& \geq 1 - (1-\alpha)^k \\
+			& \geq 1 - (1-\alpha)^{\frac{\ln{100}}{\alpha}} \\
+			& \geq 1 - (e^{-\alpha})^{\frac{\ln{100}}{\alpha}} \\
+			& \geq 1 - e^{\ln{1/100}} \\
+			& \geq 1 - 0.01 = 0.99
+\end{align}
+
+Note that from (1) to (2), we have used the inequality $p \geq \alpha$; from (2) to (3), we have used the inequality $k \geq {\ln{100} \over \alpha}$; and from (3) to (4), we have used the inequality $1-\alpha \leq e^{-\alpha}$. 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} Solution: Let $p_i$ be the probability that worker $i$ will have a defect, $D$ be the event that if all unreliable workers are caught and let $F_i$ be the event that the test fails to catch worker $i$. 
+
+\begin{align}
+  Pr[\cup_{i=1}^n F_i ] & \leq \sum_{i=1}^n Pr[F_i] \\
+                  Pr[D] & = 1 - Pr[\cup_{i=1}^n F_i ] \\
+                        & \geq 1 - \sum_{i=1}^n Pr[F_i] \\
+                        & = 1 - \sum_{i=1}^n(1 - p_i)^k \\
+                        & \geq 1 - n(1-\alpha)^k
+\end{align}
+
+From (10) to (11), we've used the fact that $p_i \geq \alpha$ if worker $i$ is unreliable. In order for $Pr[D]$ to be at least $99\%$, then 
+$$
+1 - n(1 - \alpha)^k \geq 99\%
+$$
+
+Solving for $k$, 
+
+\begin{align}
+  1 - n(1-\alpha)^k & \geq 0.99 \\
+      n(1-\alpha)^k & \leq 0.01 \\
+       (1-\alpha)^k & \leq 0.01/n \\
+                  k & \geq \log_{1-\alpha}{(0.01/n)}
+\end{align}
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

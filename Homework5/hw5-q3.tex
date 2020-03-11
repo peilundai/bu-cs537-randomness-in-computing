@@ -1,0 +1,161 @@
+\documentclass[11pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{5}
+% problem number
+\problemnumber{3}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{3. (Generalization of Randomized Median Algorithm) }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)}
+
+Solutions: The main idea is to replace $1/2$ with $k/n$. So we need the following modifications
+\begin{itemize}
+  \item line 3: Let $d$ be the $\Big( \lfloor {k \over n}n^{3/4} - \sqrt{n} \rfloor \Big)$th smallest element in the sorted set $R$.
+  \item line 4: Let $u$ be the $\Big( \lceil {k \over n}n^{3/4} + \sqrt{n} \rceil \Big)$th smallest element in the sorted set $R$.
+  \item line 6: If $\ell_d > k$ or $\ell_u > n-k$ then FAIL. 
+  \item line 8: Output the $\big( k - \ell_d + 1 \big)$th element in the sorted order of C. 
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)}
+
+Solutions: We list the running time in big-O notation for each of the time consuming steps as follows:
+
+\begin{itemize}
+  \item Choosing set $R$ from A assuming $O(1)$ time element access for $A$: $O(n^{3/4})$.
+  \item Sorting the set $R$: $O(n^{3/4} \log{n^{3/4}}) \approx O(n)$.
+  \item Partition set $A$ based on the values of $d$ and $u$: $O(n)$.
+  \item Sorting set $C$ if $|C| \leq 4n^{3/4}$: $O(n^{3/4}\log{n}) \approx O(n)$. 
+\end{itemize}
+Thus the total running time of the modified algorithm is $O(n)$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(c)}
+
+Solutions: 
+\begin{align}
+\begin{array}{l}
+  {\mathcal{E}_{1}: Y_{1}=|\{r \in R | r \leq k\}|<\frac{k}{n} n^{3 / 4}-\sqrt{n}} \\
+  {\mathcal{E}_{2}: Y_{2}=|\{r \in R | r \geq k\}|<(1 - \frac{k}{n}) n^{3 / 4}-\sqrt{n}}  \\
+  {\mathcal{E}_{3,1}: \text{at least } 2n^{3/4} \text{ elements of C are greater than the $k$th smallest element in $A$}}\\
+  {\mathcal{E}_{3,2}:\text{at least } 2n^{3/4} \text{ elements of C are smaller than the $k$th smallest element in $A$}}\\
+\end{array}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(d)}
+
+Solutions: 
+
+For ${\mathcal{E}_1}$, define a random variable $X_i$ by
+\begin{align}
+  X_{i}=\left\{\begin{array}{ll}
+{1} & {\text { if the } i \text { th sample is less than or equal to the $k$th smallest element. }} \\
+{0} & {\text { otherwise. }}
+\end{array}\right.
+\end{align}
+The $X_i$ are independent. The probability that a sample is smaller than the $k$th smallest element is $Pr[X_i = 1] = k/n$. The event ${\mathcal{E}_1}$ is equivalent to 
+
+\begin{align}
+  Y_{1}=\sum_{i=1}^{n^{3 / 4}} X_{i}<\frac{k}{n} n^{3 / 4}-\sqrt{n}
+\end{align}
+Thus, $Pr[{\mathcal{E}_1}] = Pr[Y_1 < \frac{k}{n} n^{3 / 4}-\sqrt{n}]$.
+
+
+For ${\mathcal{E}_{3,1}}$, let us bound the probability the first event occurs. If there are at least $2n^{3/4}$ elements of $C$ above the $k$th smallest element, then the order of $u$ in the sorted order of $S$ was at least $k+2n^{3/4}$ and thus the set $R$ has at least $(1 - k/n)n^{3/4}-\sqrt{n}$ samples among the $n-k-2n^{3/4}$ largest elements in $A$, the input array.
+
+Let $X$ be the number of samples among the $n-k-2n^{3/4}$ largest elements in $A$. Let $X = \sum_{i=1}^{n^{3/4}}X_i$. 
+\begin{align}
+  X_{i}=\left\{\begin{array}{ll}
+{1} & {\text { if the } i \text { th sample is among the } n-k-2n^{3/4} \text { largest elements in } S,} \\
+{0} & {\text { otherwise. }}
+\end{array}\right.
+\end{align}
+Then $Pr[{\mathcal{E}_{3,1}}] = Pr\big[X\geq (1 - k/n)n^{3/4}-\sqrt{n}\big]$
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+\documentclass[11pt]{537homework}
+
+% For including image files
+\usepackage{graphicx}
+\usepackage[ruled,vlined,noline]{algorithm2e}
+% set the vertical spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% For fancy math
+\RequirePackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+%\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{}{}{}{}[]
+
+\newcommand{\ord}[2][th]{\ensuremath{{#2}^{\mathrm{#1}}}}
+% shorthand for \mathcal{O}
+\newcommand{\Ocal}{\ensuremath{\mathcal{O}}}
+
+
+% homework number
+\hwnumber{5}
+% problem number
+\problemnumber{1}
+% your name
+\author{Peilun Dai}
+% Collaborators. If you didn't collaborate, write "\collaborators{none}".
+% If you did, for each collaborator, write "worked together", "I helped him/her" or "He/she helped me".
+ \collaborators{None}
+
+
+\begin{document}
+\section*{1. (Random hats) }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(a)} Solution: Let $X$ be the random variable that denote the number of pair of changes, and $X_{ij}$ where $i < j$ be the indicator random variable that people $i$ and $j$ exchanged their hats. Then from linearity of expectation,
+
+\begin{align}
+  \mathbf{E}(X)   & = \mathbf{E}\Big(\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} X_{ij}\Big) \\
+                  & =  \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \mathbf{E}(X_{ij}) \\
+                  & = \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} {1 \over n}{1\over n-1} \\
+                  & = {n(n-1) \over 2}{1 \over n(n-1)} = {1 \over 2}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{(b)} Solution: Since $X_{ij}$ is a binary indicator Bernoulli random variable taking values from $\{0, 1\}$, then the random variable $X_{ij}^2$ is also a Bernoulli random variable taking values from $\{0, 1\}$, and $\mathbf{E}(X_{ij}^2) = Pr[X_{ij}^2 = 1] = Pr[X_{ij} = 1] = {1 \over n(n-1)}$. 
+
+\begin{align}
+  Var[X^2]  & = \mathbf{E}[X^2] - \mathbf{E}[X]^2 \\
+            & = \mathbf{E}\Big[\Big(\sum_{i < j} X_{ij}\Big)^2\Big] - (1/2)^2 \\
+            & = \mathbf{E}\Big( \sum_{i<j}X_{ij}^2 + \sum_{i \neq m \text{ or } j \neq n} X_{ij}X_{mn} \Big) - 1/4 \\
+            & = \sum_{i<j}\mathbf{E}(X_{ij}^2) + \sum_{i \neq m \text{ or } j \neq n} \mathbf{E}(X_{ij}X_{mn}) - 1/4\\
+            & = 1/2 + \sum_{i \neq j \neq m \neq n, i<j, m<n} \mathbf{E}(X_{ij}X_{mn})- 1/4\\
+            & = 1/2 + {n \choose 2}{n-2 \choose 2} Pr[X_{ij} = 1 \;\&\&\; X_{mn} = 1] - 1/4\\
+            & = 1/2 + {n(n-1) \over 2!} {(n-2)(n-3) \over 2!} {1 \over n(n-1)} {1 \over (n-2)(n-3)} - 1/4\\
+            & = 1/2 + 1/4 - 1/4 \\
+            & = 1/2
+\end{align}
+
+From (7) to (8) we have used linearity of expectation, and from (8) to (9) we have used the fact that if $i, j$ and $m, n$ are not four unique numbers, then $X_{ij}X_{mn}$ will be zero. Thus we have only kept the terms that are non-zero. 
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
